@@ -1,63 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Payment</title>
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
 </head>
-
 <body>
+    <section id="navbar"></section>
 
-    <h1>Payment</h1>
+    <main class="payment-page">
+        <div class="payment-card">
+            <h1>Payment</h1>
+            <h2>Final Payable Amount</h2>
+            <h2 id="final-amount">₹0</h2>
+            <h3>Scan QR Code to Pay</h3>
+            <img src="images/qrcode.jfif" alt="Payment QR Code" width="250">
+            <button class="primary-btn" onclick="makePayment()">Payment Done</button>
+        </div>
+    </main>
 
-    <h2>Final Payable Amount</h2>
+    <section id="footer"></section>
 
-    <h2 id="final-amount"></h2>
-
-    <h3>Scan QR Code to Pay</h3>
-
-    <img src="images/qrcode.jfif" alt="Payment QR Code" width="250">
-
-    <br><br>
-
-    <button onclick="makePayment()">
-        Payment Done
-    </button>
-
-
+    <script src="js/fetchNavAndFooter.js"></script>
     <script>
-
-        // Get cart from localStorage
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        // Calculate total amount
         let total = 0;
 
-        cart.forEach(book => {
-
+        cart.forEach((book) => {
             total += book.price * book.quantity;
-
         });
 
-        // Display final amount
-        document.getElementById("final-amount").innerText =
-            "₹" + total;
+        document.getElementById("final-amount").innerText = "₹" + total;
 
-
-        // Payment button
         function makePayment() {
-
+            localStorage.removeItem("cart");
             alert("Payment Successful! Thank you for your purchase.");
-
+            window.location.href = "index.html";
         }
-
     </script>
-
 </body>
-
 </html>

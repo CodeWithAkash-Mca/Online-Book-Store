@@ -1,0 +1,90 @@
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    width: min(100%, 500px);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 32px 26px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 32px rgba(65, 32, 23, 0.12);
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: var(--primary-dark);
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#login-form label,
+#signup-form label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+#login-form input,
+#signup-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#login-form input:focus,
+#signup-form input:focus {
+    outline: none;
+    border-color: rgba(122, 61, 46, 0.6);
+    box-shadow: 0 0 0 3px rgba(122, 61, 46, 0.12);
+    transform: scale(1.01);
+}
+
+#login-form button,
+#signup-form button {
+    margin-top: 12px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), #a85a40);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 8px 18px rgba(122, 61, 46, 0.18);
+}
+
+#login-form button:hover,
+#signup-form button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), #6d342b);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 22px rgba(122, 61, 46, 0.24);
+}
+
+.auth-switch {
+    margin-top: 18px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 700;
+}

@@ -1,39 +1,29 @@
 const urlParams = new URLSearchParams(window.location.search);
-
 const bookId = Number(urlParams.get("id"));
-
-console.log("Book ID:", bookId);
-
-
-const allBooks = [
-    ...fiction,
-    ...romance,
-    ...biography,
-    ...mystery
-];
-
-
-const book = allBooks.find(book => book.id === bookId);
-
-console.log("Selected Book:", book);
 const container = document.getElementById("book-details");
 
-container.innerHTML = `
-    <img src="${book.image}" alt="${book.title}">
+if (!container) {
+    throw new Error("Book details container not found.");
+}
 
-    <h2>${book.title}</h2>
+const allBooks = [...fiction, ...romance, ...biography, ...mystery];
+const book = allBooks.find((item) => item.id === bookId);
 
-    <p>Author: ${book.author}</p>
-
-    <p>Genre: ${book.genre}</p>
-
-    <p>Price: ₹${book.price}</p>
-
-    <p>Rating: ⭐ ${book.rating}</p>
-
-    <p>${book.description}</p>
-
-    <button onclick="addToCart(${book.id})">
-        Add to Cart
-    </button>
-`;
+if (!book) {
+    container.innerHTML = "<p>Book not found.</p>";
+} else {
+    container.innerHTML = `
+        <div class="book-detail-card">
+            <img src="${book.image}" alt="${book.title}">
+            <div class="book-detail-info">
+                <p class="eyebrow">${book.genre}</p>
+                <h1>${book.title}</h1>
+                <p>Author: ${book.author}</p>
+                <p>Price: ₹${book.price}</p>
+                <p>Rating: ⭐ ${book.rating}</p>
+                <p>${book.description}</p>
+                <button class="primary-btn" onclick="addToCart(${book.id})">Add to Cart</button>
+            </div>
+        </div>
+    `;
+}

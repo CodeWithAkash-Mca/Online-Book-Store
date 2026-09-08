@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Shopping Cart</title>
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
-
 <body>
+    <section id="navbar"></section>
 
-    <h1>Shopping Cart</h1>
+    <main class="cart-page">
+        <h1 class="page-title">Shopping Cart</h1>
+        <div id="cart-container"></div>
+        <div id="cart-total"></div>
+        <button class="primary-btn checkout-btn" onclick="goToPayment()">Proceed to Payment</button>
+    </main>
 
-    <!-- CART ITEMS -->
-    <div id="cart-container"></div>
-
-    <!-- CART TOTAL -->
-    <div id="cart-total"></div>
-
-    <!-- PAYMENT BUTTON -->
-    <button onclick="goToPayment()">
-        Proceed to Payment
-    </button>
-
+    <section id="footer"></section>
 
     <script src="js/data.js"></script>
-
     <script src="js/cart.js"></script>
-
+    <script src="js/fetchNavAndFooter.js"></script>
 </body>
-
 </html>

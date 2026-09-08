@@ -1,92 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Online Book Store</title>
-
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 <body>
-
-    <!-- NAVBAR -->
     <section id="navbar"></section>
 
-
-    <!-- MAIN CONTENT -->
     <main>
-
         <section class="hero">
-
-            <h1>Welcome to Online Book Store</h1>
-
-            <p>Discover your next great read</p>
-
-            <button>Explore Books</button>
-
+            <div class="hero-content">
+                <p class="eyebrow">Curated Reads</p>
+                <h1>Welcome to Online Book Store</h1>
+                <p>Discover stories that stay with you long after the final page.</p>
+                <a class="primary-btn" href="books.html">Explore Books</a>
+            </div>
         </section>
 
-
-        <!-- CATEGORIES -->
         <section class="categories">
-
             <h2>Browse Categories</h2>
-
             <div class="category-container">
-
-    <a href="fiction.html" class="category">
-        <h3>Fiction</h3>
-    </a>
-
-    <a href="romance.html" class="category">
-        <h3>Romance</h3>
-    </a>
-
-    <a href="mystery.html" class="category">
-        <h3>Mystery</h3>
-    </a>
-
-    <a href="biography.html" class="category">
-        <h3>Biography</h3>
-    </a>
-
-</div>
-
+                <a href="fiction.html" class="category">
+                    <h3>Fiction</h3>
+                </a>
+                <a href="romance.html" class="category">
+                    <h3>Romance</h3>
+                </a>
+                <a href="mystery.html" class="category">
+                    <h3>Mystery</h3>
+                </a>
+                <a href="biography.html" class="category">
+                    <h3>Biography</h3>
+                </a>
+            </div>
         </section>
 
-
-        <!-- FEATURED BOOKS -->
         <section class="featured-books">
-
             <h2>Featured Books</h2>
-
             <div id="book-container"></div>
-
         </section>
-
     </main>
 
-
-    <!-- FOOTER -->
     <section id="footer"></section>
 
-
-  <script src="js/data.js"></script>
-  <script src="js/cart.js"></script>
-
-<script src="js/fetchBooks.js"></script>
-
-<script>
-    displayBooks(fiction);
-    displayBooks(romance);
-</script>
-
-<script src="js/fetchNavAndFooter.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/fetchBooks.js"></script>
+    <script>
+        const featuredBooks = [...fiction, ...romance];
+        displayBooks(featuredBooks);
+    </script>
+    <script src="js/fetchNavAndFooter.js"></script>
 </body>
-
 </html>

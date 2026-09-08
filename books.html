@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Books</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>all books with images</h2>
-    <script></script>
+    <section id="navbar"></section>
+
+    <main>
+        <h1 class="page-title">All Books</h1>
+        <div id="book-container"></div>
+    </main>
+
+    <section id="footer"></section>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/fetchBooks.js"></script>
+    <script>
+        const allBooks = [...fiction, ...romance, ...biography, ...mystery];
+        displayBooks(allBooks);
+    </script>
+    <script src="js/fetchNavAndFooter.js"></script>
 </body>
 </html>

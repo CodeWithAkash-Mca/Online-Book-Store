@@ -2,29 +2,39 @@
 // FETCH NAVBAR
 // =========================
 
-fetch("navbar.html")
-    .then(response => response.text())
-    .then(data => {
+function updateCartCount() {
+    const cartCount = document.getElementById("cart-count");
 
-        document.getElementById("navbar").innerHTML = data;
+    if (!cartCount) {
+        return;
+    }
 
-        displayAuthLinks();
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = cart.reduce((sum, book) => sum + book.quantity, 0);
+    cartCount.innerText = count;
+}
 
-        updateCartCount();
+const navbarElement = document.getElementById("navbar");
 
-    });
+if (navbarElement) {
+    fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            navbarElement.innerHTML = data;
+            displayAuthLinks();
+            updateCartCount();
+        });
+}
 
-// =========================
-// FETCH FOOTER
-// =========================
+const footerElement = document.getElementById("footer");
 
-fetch("footer.html")
-    .then(response => response.text())
-    .then(data => {
-
-        document.getElementById("footer").innerHTML = data;
-
-    });
+if (footerElement) {
+    fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+            footerElement.innerHTML = data;
+        });
+}
 
 
 // =========================

@@ -1,66 +1,37 @@
-// =========================
-// ADD BOOK TO CART
-// =========================
-
-function addToCart(bookId) {
-
-    // Check if user is logged in
-    const loggedInUser = localStorage.getItem("loggedInUser");
-
-    if (!loggedInUser) {
-
-        alert("Please login first to add books to your cart.");
-
-        window.location.href = "login.html";
-
-        return;
-    }
-
-
-    // Combine all books
-    const allBooks = [
-        ...fiction,
-        ...romance,
-        ...biography,
-        ...mystery
-    ];
-
-    // Find selected book
-    const book = allBooks.find(book => book.id === bookId);
-
-    // Get existing cart
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Check if book already exists
-    const existingBook = cart.find(item => item.id === bookId);
-
-    if (existingBook) {
-
-        existingBook.quantity++;
-
-    } else {
-
-        cart.push({
-            ...book,
-            quantity: 1
-        });
-
-    }
-
-    // Save cart
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Update cart count
-    updateCartCount();
-
-    alert("Book added to cart!");
-
+function getAllBooks() {
+  return [...fiction, ...romance, ...biography, ...mystery];
 }
 
+function addToCart(bookId) {
+  const loggedInUser = localStorage.getItem("loggedInUser");
 
-// =========================
-// DISPLAY CART
-// =========================
+  if (!loggedInUser) {
+    alert("Please login first to add books to your cart.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const book = getAllBooks().find((item) => item.id === Number(bookId));
+
+  if (!book) {
+    alert("Book not found.");
+    return;
+  }
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingBook = cart.find((item) => item.id === Number(bookId));
+
+  if (existingBook) {
+    existingBook.quantity += 1;
+  } else {
+    cart.push({ ...book, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  displayCart();
+  alert("Book added to cart!");
+}
 
 function displayCart() {
   const container = document.getElementById("cart-container");
@@ -69,156 +40,102 @@ function displayCart() {
     return;
   }
 
-  // Get cart from localStorage
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  // Clear existing HTML
   container.innerHTML = "";
 
-  // Display every cart item
-  cart.forEach((book) => {
-    const cartItem = document.createElement("div");
+  if (cart.length === 0) {
+    container.innerHTML = "<p class='empty-cart'>Your cart is empty.</p>";
+  } else {
+    cart.forEach((book) => {
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-item";
 
-    cartItem.innerHTML = `
+      cartItem.innerHTML = `
+        <img src="${book.image}" alt="${book.title}">
+        <div class="cart-item-info">
+          <h3>${book.title}</h3>
+          <p>Author: ${book.author}</p>
+          <p>Price: ₹${book.price}</p>
+          <div class="quantity-controls">
+            <button onclick="decreaseQuantity(${book.id})">-</button>
+            <span>${book.quantity}</span>
+            <button onclick="increaseQuantity(${book.id})">+</button>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart(${book.id})">Remove</button>
+        </div>
+      `;
 
-            <h2>${book.title}</h2>
+      container.appendChild(cartItem);
+    });
+  }
 
-            <p>Author: ${book.author}</p>
+  const totalElement = document.getElementById("cart-total");
 
-            <p>Price: ₹${book.price}</p>
+  if (totalElement) {
+    const total = cart.reduce((sum, book) => sum + book.price * book.quantity, 0);
+    totalElement.innerHTML = `<h2>Total: ₹${total}</h2>`;
+  }
 
-            <img src="${book.image}" width="100">
-
-            <div>
-
-                <button onclick="decreaseQuantity(${book.id})">
-                    -
-                </button>
-
-                <span>${book.quantity}</span>
-
-                <button onclick="increaseQuantity(${book.id})">
-                    +
-                </button>
-
-            </div>
-
-            <button onclick="removeFromCart(${book.id})">
-                Remove
-            </button>
-
-        `;
-
-    container.appendChild(cartItem);
-  });
-  let total = 0;
-
-  cart.forEach((book) => {
-    total += book.price * book.quantity;
-  });
-
-  document.getElementById("cart-total").innerHTML = `
-    <h2>Total: ₹${total}</h2>
-`;
+  updateCartCount();
 }
-
-// =========================
-// INCREASE QUANTITY
-// =========================
 
 function increaseQuantity(bookId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  const book = cart.find((book) => book.id === bookId);
+  const book = cart.find((item) => item.id === Number(bookId));
 
   if (book) {
-    book.quantity++;
+    book.quantity += 1;
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  // Save updated cart
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Refresh cart display
   displayCart();
 }
 
-
-// =========================
-// DECREASE QUANTITY
-// =========================
-
 function decreaseQuantity(bookId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const book = cart.find((item) => item.id === Number(bookId));
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (book) {
+    book.quantity -= 1;
 
-    const book = cart.find(book => book.id === bookId);
-
-    if (book) {
-
-        book.quantity--;
-
-        // If quantity becomes 0, remove the book
-        if (book.quantity <= 0) {
-
-            cart = cart.filter(item => item.id !== bookId);
-
-        }
+    if (book.quantity <= 0) {
+      cart = cart.filter((item) => item.id !== Number(bookId));
     }
 
-    // Save updated cart
     localStorage.setItem("cart", JSON.stringify(cart));
+  }
 
-    // Refresh cart display
-    displayCart();
+  displayCart();
 }
-
-
-// =========================
-// REMOVE BOOK COMPLETELY
-// =========================
 
 function removeFromCart(bookId) {
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Remove the selected book
-    cart = cart.filter(book => book.id !== bookId);
-
-    // Save updated cart
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Refresh cart display
-    displayCart();
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter((book) => book.id !== Number(bookId));
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
 }
-//payment redirection
+
 function goToPayment() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    window.location.href = "payment.html";
+  if (!cart.length) {
+    alert("Your cart is empty. Add books before checkout.");
+    return;
+  }
 
+  window.location.href = "payment.html";
 }
-
-// =========================
-// DISPLAY CART WHEN PAGE LOADS
-// =========================
 
 function updateCartCount() {
+  const cartCount = document.getElementById("cart-count");
 
-    const cartCount = document.getElementBycl("cart-count");
+  if (!cartCount) {
+    return;
+  }
 
-    if (!cartCount) {
-        return;
-    }
-
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    let count = 0;
-
-    cart.forEach(book => {
-
-        count += book.quantity;
-
-    });
-
-    cartCount.innerText = count;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((sum, book) => sum + book.quantity, 0);
+  cartCount.innerText = count;
 }
+
 displayCart();
