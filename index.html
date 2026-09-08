@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -40,22 +39,23 @@
 
             <div class="category-container">
 
-                <div class="category">
-                    <h3>Fiction</h3>
-                </div>
+    <a href="fiction.html" class="category">
+        <h3>Fiction</h3>
+    </a>
 
-                <div class="category">
-                    <h3>Romance</h3>
-                </div>
-                <div class="category">
-                    <h3>Mystery</h3>
-                </div>
+    <a href="romance.html" class="category">
+        <h3>Romance</h3>
+    </a>
 
-                <div class="category">
-                    <h3>Biography</h3>
-                </div>
+    <a href="mystery.html" class="category">
+        <h3>Mystery</h3>
+    </a>
 
-            </div>
+    <a href="biography.html" class="category">
+        <h3>Biography</h3>
+    </a>
+
+</div>
 
         </section>
 
@@ -77,8 +77,14 @@
 
 
   <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
 
 <script src="js/fetchBooks.js"></script>
+
+<script>
+    displayBooks(fiction);
+    displayBooks(romance);
+</script>
 
 <script src="js/fetchNavAndFooter.js"></script>
 </body>
