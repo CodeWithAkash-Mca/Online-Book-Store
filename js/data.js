@@ -7,7 +7,7 @@ const fiction = [
     {
         id: 1,
         title: "Angira",
-        author: "A. K. Verma",
+        author: "Faiz Abdullah",
         price: 299,
         genre: "Fiction",
         image: "images/fiction/angira.jpg",
@@ -17,8 +17,8 @@ const fiction = [
 
     {
         id: 2,
-        title: "Bug",
-        author: "William Adams",
+        title: "The Burning Ground",
+        author: "Abir Mukharjee",
         price: 349,
         genre: "Fiction",
         image: "images/fiction/bug.webp",
@@ -39,8 +39,8 @@ const fiction = [
 
     {
         id: 4,
-        title: "Poii",
-        author: "R. K. Sharma",
+        title: "The Place of Illusions",
+        author: "Chitra Banarjee",
         price: 279,
         genre: "Fiction",
         image: "images/fiction/poii.webp",
@@ -70,8 +70,8 @@ const romance = [
 
     {
         id: 6,
-        title: "It's Complicated",
-        author: "R. S. Mehta",
+        title: "I Cannot Say Goodbye To You",
+        author: "Rithvik Singh",
         price: 349,
         genre: "Romance",
         image: "images/romance/icsgty.webp",
@@ -81,8 +81,8 @@ const romance = [
 
     {
         id: 7,
-        title: "Something Special",
-        author: "Emily Rose",
+        title: "She Stood By Me",
+        author: "Tarun Vikas",
         price: 329,
         genre: "Romance",
         image: "images/romance/ssbm.webp",
@@ -92,8 +92,8 @@ const romance = [
 
     {
         id: 8,
-        title: "Together",
-        author: "Sarah Miller",
+        title: "To Good Too Be True",
+        author: "Prajakta Koli",
         price: 299,
         genre: "Romance",
         image: "images/romance/tgtb.webp",
@@ -103,8 +103,8 @@ const romance = [
 
     {
         id: 9,
-        title: "The Last Hope",
-        author: "Emma Thomas",
+        title: "The Love Hypothesis",
+        author: "Ali Hazelwood",
         price: 319,
         genre: "Romance",
         image: "images/romance/tlh.webp",
@@ -123,8 +123,8 @@ const biography = [
 
     {
         id: 10,
-        title: "The Story of a Life",
-        author: "Michael Brown",
+        title: "Kya Bhoolun Kya Yaad Karun",
+        author: "Harivansh Rai Bacchan",
         price: 399,
         genre: "Biography",
         image: "images/biography/kbkyk.webp",
@@ -134,8 +134,8 @@ const biography = [
 
     {
         id: 11,
-        title: "My Journey",
-        author: "Raj Mehta",
+        title: "Kalam ka Sipahi",
+        author: "Premchand",
         price: 429,
         genre: "Biography",
         image: "images/biography/kks.webp",
@@ -145,8 +145,8 @@ const biography = [
 
     {
         id: 12,
-        title: "Making History",
-        author: "David Johnson",
+        title: "Echos of My Past",
+        author: "Rajendra Yadav",
         price: 449,
         genre: "Biography",
         image: "images/biography/mmkdh.jpg",
@@ -156,8 +156,8 @@ const biography = [
 
     {
         id: 13,
-        title: "The Life Story",
-        author: "James Carter",
+        title: "Wings of Fire",
+        author: "APJ Abdul Kalam",
         price: 379,
         genre: "Biography",
         image: "images/biography/shopping.webp",
@@ -176,8 +176,8 @@ const mystery = [
 
     {
         id: 14,
-        title: "The Complete Collection",
-        author: "Arthur Conan Doyle",
+        title: "Chanakya's Chant",
+        author: "Ashwin Sanghi",
         price: 499,
         genre: "Mystery",
         image: "images/mystery/cc.webp",
@@ -187,19 +187,19 @@ const mystery = [
 
     {
         id: 15,
-        title: "Loloss",
-        author: "James Anderson",
+        title: "The Inheritance Of Loss",
+        author: "Kiran Desai",
         price: 399,
         genre: "Mystery",
-        image: "images/mystery/loloss.webp",
+        image: "images/mystery/ioloss.webp",
         description: "A suspenseful mystery filled with secrets, clues and unexpected twists.",
         rating: 4.4
     },
 
     {
         id: 16,
-        title: "MC",
-        author: "Robert Wilson",
+        title: "Mid night's Children",
+        author: "Salman Rushdie",
         price: 329,
         genre: "Mystery",
         image: "images/mystery/mc.webp",
@@ -209,8 +209,8 @@ const mystery = [
 
     {
         id: 17,
-        title: "OAM",
-        author: "Daniel Brooks",
+        title: "One Marriage Murder",
+        author: "Chetan Bhagata",
         price: 379,
         genre: "Mystery",
         image: "images/mystery/oam.webp",
