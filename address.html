@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Address</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/address.css">
+</head>
+<body>
+    <section id="navbar"></section>
+
+    <main class="address-page">
+        <div class="address-card">
+            <h1>Delivery Address</h1>
+            <p class="address-intro">Where should we deliver your books?</p>
+            <form id="address-form">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="fullName" autocomplete="name" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="tel" required>
+
+                <label for="street">Address</label>
+                <textarea id="street" name="street" rows="3" autocomplete="street-address" required></textarea>
+
+                <div class="address-row">
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" autocomplete="address-level2" required>
+                    </div>
+                    <div>
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" autocomplete="address-level1" required>
+                    </div>
+                </div>
+
+                <label for="pincode">PIN Code</label>
+                <input type="text" id="pincode" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="postal-code" required>
+
+                <button class="primary-btn" type="submit">Continue to Payment</button>
+            </form>
+        </div>
+    </main>
+
+    <section id="footer"></section>
+
+    <script src="js/address.js"></script>
+    <script src="js/fetchNavAndFooter.js"></script>
+</body>
+</html>

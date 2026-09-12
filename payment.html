@@ -26,7 +26,16 @@
     <script src="js/fetchNavAndFooter.js"></script>
     <script>
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const shippingAddress = JSON.parse(localStorage.getItem("shippingAddress"));
         let total = 0;
+
+        if (!cart.length) {
+            alert("Your cart is empty. Add books before checkout.");
+            window.location.href = "cart.html";
+        } else if (!shippingAddress) {
+            alert("Please add a delivery address before payment.");
+            window.location.href = "address.html";
+        }
 
         cart.forEach((book) => {
             total += book.price * book.quantity;
@@ -36,6 +45,7 @@
 
         function makePayment() {
             localStorage.removeItem("cart");
+            localStorage.removeItem("shippingAddress");
             alert("Payment Successful! Thank you for your purchase.");
             window.location.href = "index.html";
         }

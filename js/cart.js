@@ -123,7 +123,7 @@ function goToPayment() {
     return;
   }
 
-  window.location.href = "payment.html";
+  window.location.href = "address.html";
 }
 
 function updateCartCount() {
